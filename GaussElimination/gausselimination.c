@@ -23,7 +23,7 @@ int gausselim(double* AB, int rows, int cols)
             for (int k = i; k < cols; k++)
             {
                 double tmp = AB[i * cols + k];
-                AB[i * cols + k] = AB[jpiv, k];
+                AB[i * cols + k] = AB[jpiv * cols + k];
                 AB[jpiv * cols + k] = tmp;
             }
 
