@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
     /* fill in matrix a with zeroes */
     for (int j = 0; j < rank; ++j)
         for (int i = 0; i <= rank; ++i)
-            a[j * rank + i] = 0;
+            a[j * (rank + 1) + i] = 0;
 
     // right-hand side column (#rank+1) for augmented matrix, a Poisson term contribution
     for (int iy = 1; iy < ivert; ++iy)
@@ -99,7 +99,7 @@ int main(int argc, char* argv[]) {
         x_arr[i] = 0;
 
     clock_t startSolver = clock();
-    solvelinsys(a, rank + 1, rank, x_arr);
+    solvelinsys(a, rank, rank + 1, x_arr);
     clock_t finishSolver = clock();
 
     /*for (int iy = 1; iy < ivert; ++iy)

@@ -48,7 +48,7 @@ int gausselim(double* AB, int rows, int cols)
 
 int solvelinsys(double* AB, int rows, int cols, double* x_arr)
 {
-    int res = gausselim(AB, cols, rows);
+    int res = gausselim(AB, rows, cols);
     /*printf("\n");
     for (int iy = 0; iy < cols; ++iy) {
         for (int ix = 0; ix < rows; ++ix) {
@@ -58,12 +58,12 @@ int solvelinsys(double* AB, int rows, int cols, double* x_arr)
     }*/
     // get the solution vector x by backsubstitution
     //double* x_arr = (double*) malloc(rows * sizeof(double));
-    for (int i = cols - 1; i >= 0; i--) {
-        double x = AB[i * rows + rows - 1];
-        for (int j = rows - 2; j > i; j--)
-            x -= AB[i * rows + j] * x_arr[j];
+    for (int i = rows - 1; i >= 0; i--) {
+        double x = AB[i * cols + cols - 1];
+        for (int j = cols - 2; j > i; j--)
+            x -= AB[i * cols + j] * x_arr[j];
         //if (AB[i * cols + i] != 0)
-        x_arr[i] = (x / AB[i * rows + i]);
+        x_arr[i] = (x / AB[i * cols + i]);
     }
     return 0;
 }
